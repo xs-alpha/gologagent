@@ -3,8 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"go.etcd.io/etcd/client/v3"
 	"time"
+
+	clientv3 "go.etcd.io/etcd/client/v3"
 )
 
 func main() {
@@ -20,9 +21,9 @@ func main() {
 
 	// put
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	//str := `[{"path":"d:/itcast/logs/log.log","topic":"web_log"},{"path":"d:/itcast/001/log/log.log","topic":"web_logs"}]`
-	str := `[{"path":"d:/itcast/logs/log.log","topic":"web_log"}]`
-	//str := `[{"path":"d:/itcast/logs/log.log","topic":"web_log"},{"path":"d:/itcast/001/log/log.log","topic":"web_logs"},{"path":"d:/itcast/001/log/log2.log","topic":"web_logs2"}]`
+	str := `[{"path":"/home/xiaosheng/go/tmp/tmp1/log1.log","topic":"web_log"},{"path":"/home/xiaosheng/go/tmp/tmp2/log2.log","topic":"web_logs"}]`
+	// str := `[{"path":"/home/xiaosheng/go/tmp/tmp1/log1.log","topic":"web_log"}]`
+	//str := `[{"path":"/home/xiaosheng/go/tmp/tmp1/log1.log","topic":"web_log"},{"path":"/home/xiaosheng/go/tmp/tmp2/log2.log","topic":"web_logs"},{"path":"/home/xiaosheng/go/tmp/tmp3/log3.log","topic":"web_logs2"}]`
 	_, err = cli.Put(ctx, "etest", str)
 	if err != nil {
 		fmt.Printf("put to etcd failed, err%v,", err)
@@ -30,7 +31,6 @@ func main() {
 	}
 	cancel()
 
-	// get
 	ctx, cancel = context.WithTimeout(context.Background(), time.Second)
 	get, err := cli.Get(ctx, "etest")
 	if err != nil {
@@ -46,3 +46,6 @@ func main() {
 		fmt.Println(i)
 	}
 }
+
+// x:="- /home/xiaosheng/go/tmp/tmp1/log1.log"
+// get

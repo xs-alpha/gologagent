@@ -1,12 +1,12 @@
 package tailfile
 
 import (
-	"01/logagent/common"
-	"01/logagent/kafka"
 	"context"
 	"github.com/Shopify/sarama"
 	"github.com/hpcloud/tail"
 	"github.com/sirupsen/logrus"
+	"logagent/common"
+	"logagent/kafka"
 	"strings"
 	"time"
 )
@@ -55,7 +55,7 @@ func (t *tailTask) run() {
 				logrus.Infof("出现空行，跳过")
 				continue
 			}
-			logrus.Infof("msg:", msg.Text)
+			logrus.Infof("msg:%v", msg.Text)
 			msg2 := &sarama.ProducerMessage{}
 			msg2.Topic = t.topic
 			msg2.Value = sarama.StringEncoder(msg.Text)

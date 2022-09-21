@@ -12,10 +12,10 @@ import (
 // new 多用来为基本数据类型（bool, string, int...）初始化内存，返回的是指针
 // make 用来初始化slice, map, channel，返回的是对应类型
 
-var wg sync.WaitGroup
+var wg4 sync.WaitGroup
 
-func worker(ch <-chan bool) {
-	defer wg.Done()
+func worker4(ch <-chan bool) {
+	defer wg4.Done()
 Label:
 	for {
 		fmt.Println("worker...")
@@ -31,10 +31,10 @@ Label:
 
 func main() {
 	var exitChan = make(chan bool)
-	wg.Add(1)
-	go worker(exitChan)
+	wg4.Add(1)
+	go worker4(exitChan)
 	time.Sleep(time.Second * 3)
 	exitChan <- true
-	wg.Wait()
+	wg4.Wait()
 	fmt.Println("over")
 }

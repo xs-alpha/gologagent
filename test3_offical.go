@@ -13,10 +13,10 @@ import (
 // new 多用来为基本数据类型（bool, string, int...）初始化内存，返回的是指针
 // make 用来初始化slice, map, channel，返回的是对应类型
 
-var wg sync.WaitGroup
+var wg3 sync.WaitGroup
 
-func worker(ctx context.Context) {
-	defer wg.Done()
+func worker3(ctx context.Context) {
+	defer wg3.Done()
 Label:
 	for {
 		fmt.Println("worker...")
@@ -34,10 +34,10 @@ Label:
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 
-	wg.Add(1)
-	go worker(ctx)
+	wg3.Add(1)
+	go worker3(ctx)
 	time.Sleep(time.Second * 3)
 	cancel()
-	wg.Wait()
+	wg3.Wait()
 	fmt.Println("over")
 }

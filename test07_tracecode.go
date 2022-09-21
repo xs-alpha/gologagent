@@ -11,12 +11,12 @@ import (
 type TraceCode string
 type UserId string
 
-var wg sync.WaitGroup
+var wg2 sync.WaitGroup
 
 var UseridKey = UserId("USERID_KEY")
 var TraceCodeKey = TraceCode("TRACE_CODE")
 
-func worker(ctx context.Context) {
+func worker2(ctx context.Context) {
 	// trace_code, ok := ctx.Value(key).(TraceCode)
 	// ctx.Value这是取值
 	trace_code, ok := ctx.Value(TraceCodeKey).(string)
@@ -41,7 +41,7 @@ LOOP:
 		}
 	}
 	fmt.Println("worker done！")
-	wg.Done()
+	wg2.Done()
 }
 
 func main() {
@@ -49,10 +49,10 @@ func main() {
 	ctx = context.WithValue(ctx, TraceCodeKey, "123456789")
 	ctx = context.WithValue(ctx, UseridKey, int64(212121213456))
 	log.Printf("%s main 函数", "123456789")
-	wg.Add(1)
-	go worker(ctx)
+	wg2.Add(1)
+	go worker2(ctx)
 	time.Sleep(time.Second * 5)
 	cancel()
-	wg.Wait()
+	wg2.Wait()
 	fmt.Println("over")
 }

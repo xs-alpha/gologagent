@@ -1,8 +1,8 @@
 package tailfile
 
 import (
-	"01/logagent/common"
 	"github.com/sirupsen/logrus"
+	"logagent/common"
 )
 
 type tailTaskMgr struct {

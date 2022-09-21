@@ -10,7 +10,7 @@ func main() {
 	lis := []string{"119", "179", "179", "119"}
 	t := -1
 	r := -1
-	for i := 0; i < 500000; i++ {
+	for i := 0; i < 5000000; i++ {
 		rand.Seed(time.Now().UnixNano())
 		i := rand.Intn(4)
 		fmt.Println("oxoo", i)

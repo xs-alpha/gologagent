@@ -1,12 +1,12 @@
 package main
 
 import (
-	"01/logagent/etcd"
-	"01/logagent/kafka"
-	"01/logagent/tailfile"
 	"fmt"
 	"github.com/sirupsen/logrus"
 	"gopkg.in/ini.v1"
+	"logagent/etcd"
+	"logagent/kafka"
+	"logagent/tailfile"
 )
 
 type Config struct {

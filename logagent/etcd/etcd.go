@@ -1,13 +1,13 @@
 package etcd
 
 import (
-	"01/logagent/common"
-	"01/logagent/tailfile"
 	"context"
 	"encoding/json"
 	"fmt"
 	"github.com/sirupsen/logrus"
 	clientv3 "go.etcd.io/etcd/client/v3"
+	"logagent/common"
+	"logagent/tailfile"
 	"time"
 )
 

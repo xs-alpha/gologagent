@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/Shopify/sarama"
 )
 
@@ -38,3 +39,6 @@ func main() {
 // bin\windows\zookeeper-server-start.bat config\zookeeper.properties
 // bin\windows\kafka-server-start.bat config\server.properties
 // bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic shopping(主题名)
+
+// bin\zookeeper-server-start.sh config\zookeeper.properties
+// bin/kafka-server-start.sh config/server.properties
